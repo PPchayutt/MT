@@ -1,0 +1,84 @@
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    margin-top: 60px;
+    letter-spacing: 3px;
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 28px;
+    letter-spacing: 3px;
+}
+
+body {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)),
+        url("image/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    overflow: hidden;
+}
+
+.content-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-top: 30px;
+}
+
+svg {
+    width: 200px;
+    height: 200px;
+}
+
+.letter {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.letter path {
+    fill: none;
+    stroke-width: 22;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.letter.p path {
+    stroke: lightgreen;
+}
+
+.letter.r path {
+    stroke: yellowgreen;
+}
+
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-fast {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(-360deg);
+    }
+}
+
+.letter.p {
+    animation: spin-slow 3s linear infinite;
+}
+
+.letter.r {
+    animation: spin-fast 3s linear infinite;
+}

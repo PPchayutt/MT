@@ -1,0 +1,76 @@
+<!DOCTYPE html>  
+<html> 
+    <head> 
+        <title>CSS Example</title> 
+        <link href="style.css" rel="stylesheet" type="text/css"> 
+    </head>
+    <body> 
+        <link href="https://db.onlinewebfonts.com/c/8503adf008ebf781c6342c58254552e4?family=BMWTypeNext+Pro" rel="stylesheet">
+        <center>
+            <h1><font color="white">CHANATHIP THIPPANYA.</font></h1>
+            <h2><font color= "white">ID : 67070027</font></h2>
+        </center>
+        <div class="content-wrap">
+            <svg viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg" style="margin-top: 200px;">
+                <g class="letter c">
+                    <path d="M 250 150
+                             C 250 70, 170 20, 90 40
+                             C 30 55, 0 110, 20 170
+                             C 45 230, 110 270, 180 260" />
+                </g>
+            </svg>
+        <div>
+                <img id ="aa" src="image/1703511300469.webp" width="400px" style="border-radius: 20px; margin-bottom: 5px; filter: grayscale(20%);">
+                <div>
+                    <input type="checkbox" id="imgview">
+                    <label for="imgview" style="font-family: Arial, Helvetica, sans-serif ; color: white; letter-spacing: 1px;">Show/Hide image</label>
+                </div>
+                <img id="monalisa" src="image/6906_01.jpg" width="200" style="border-radius: 10px; margin-top: 50px;">
+        </div>
+        <div>
+            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" overflow="visible" style="margin-top: -500px;">
+                <g class="letter t">
+                    <path d="M 0 30 L 300 30" />
+                    <path d="M 150 30 L 150 260" />
+                </g>
+            </svg>
+        </div>
+    </body>
+    <script>
+        document.getElementById('imgview').checked = true;
+        document.getElementById('imgview').onclick = function() {
+            if (document.getElementById('imgview').checked == true) {
+                document.getElementById('aa').style.visibility = 'visible';
+            } else { 
+                document.getElementById('aa').style.visibility = 'hidden';
+            }
+        }
+        var image = document.getElementById("monalisa");
+        image.addEventListener("load", function () {
+            desaturateImage(image);
+        });
+        function desaturateImage(image) {
+            var statustxt = document.createElement('h3');
+            image.parentNode.insertBefore(statustxt, image);
+            statustxt.textContent = "Image Loaded";
+        }
+        function desaturateImage(image){
+            var canvas = document.createElement('canvas');
+            image.parentNode.insertBefore(canvas, image);
+            canvas.width = image.width;
+            canvas.height = image.height;
+            var ctx = canvas.getContext("2d");
+            ctx.drawImage(image, 0, 0);
+
+            var imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+            for (var i = 0; i < imgData.data.length; i += 4) {
+                var grey = 0.126 * imgData.data[i] + 0.7152 * imgData.data[i + 1] + 0.0722 * imgData.data[i + 2];
+                imgData.data[i] = grey;
+                imgData.data[i + 1] = grey;
+                imgData.data[i + 2] = grey;
+            }
+            ctx.putImageData(imgData, 0, 0);
+        }
+    </script>
+</html>

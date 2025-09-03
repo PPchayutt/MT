@@ -1,20 +1,82 @@
 <!DOCTYPE html>
 <html>
-    <body>
-        <center>
-            <h1><font color="red">Hello World!</font></h1>
-        </center>
-        <h3>
-            <font color="blue">Friends</font>
-        </h3>
-        <font color="red" size="5">My name is Joe.</font>
-        <br>
-        <img src="mona_lisa.jpg" alt="Mona Lisa">
-        <br>
-        <font color="blue" size="4">My best friend is Sally.</font>
-        <br>
-        <br>
-        <font color="green" face="verdana" size="4">My other friend is Bob.</font>
-        <br>
-    </body>
+
+<head>
+    <title>Home</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    <center>
+        <h1>
+            <font color="white">Pitchayut Rattanamanee</font>
+        </h1>
+        <h2>
+            <font color="white">67070115</font>
+        </h2>
+    </center>
+
+    <div class="content-wrap">
+        <svg viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <g class="letter p">
+                <path d="M 50 250 L 50 50 M 50 50 L 150 50 L 150 150 L 50 150" />
+            </g>
+        </svg>
+
+        <div>
+            <img id="my_photo" src="image/my_photo.jpg" width="400px" style="border-radius: 20px; margin-bottom: 5px;">
+
+            <div>
+                <input type="checkbox" id="imgview">
+                <label for="imgview"
+                    style="font-family: Arial, Helvetica, sans-serif ; color: white; letter-spacing: 1px;">Show/Hide
+                    image</label>
+            </div>
+
+            <img id="place_photo" src="image/place_photo.jpg" width="400"
+                style="border-radius: 10px; margin-top: 50px; visibility: hidden; position: absolute;">
+        </div>
+
+        <div>
+            <svg viewBox="0 0 300 200" xmlns="http://www.w3.org/2000/svg" overflow="visible"
+                style="margin-top: -500px;">
+                <g class="letter r">
+                    <path d="M 50 250 L 50 50 M 50 50 L 150 50 L 150 150 L 50 150 M 100 150 L 150 250" />
+                </g>
+            </svg>
+        </div>
+    </div>
+</body>
+
+<script>
+    document.getElementById("imgview").checked = true;
+    document.getElementById("imgview").onclick = function () {
+        if (document.getElementById("imgview").checked == true) {
+            document.getElementById("my_photo").style.visibility = "visible";
+        } else {
+            document.getElementById("my_photo").style.visibility = "hidden";
+        }
+    }
+
+    const image = document.getElementById("place_photo");
+
+    image.onload = function () {
+        const canvas = document.createElement("canvas");
+        image.parentNode.insertBefore(canvas, image.nextSibling);
+        canvas.width = image.width;
+        canvas.height = image.height;
+        const ctx = canvas.getContext("2d");
+        ctx.drawImage(image, 0, 0, image.width, image.height);
+
+        const imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+        for (let i = 0; i < imgData.data.length; i += 4) {
+            let grey = 0.2126 * imgData.data[i] + 0.7152 * imgData.data[i + 1] + 0.0722 * imgData.data[i + 2];
+            imgData.data[i] = grey;
+            imgData.data[i + 1] = grey;
+            imgData.data[i + 2] = grey;
+        }
+        ctx.putImageData(imgData, 0, 0);
+    };
+</script>
+
 </html>

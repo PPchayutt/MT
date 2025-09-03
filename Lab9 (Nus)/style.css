@@ -1,0 +1,62 @@
+h1{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 40px;
+    margin-top: 60px;
+    letter-spacing: 3px;
+}
+
+h2{
+    font-family:'Times New Roman', Times, serif;
+    font-size: 28px;
+    letter-spacing: 3px;
+}
+
+body {
+    background-image: 
+    linear-gradient(rgba(255,255,255,0.02), rgba(255,255,255,0.1)),
+    url('image/0ecUaq.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.content-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    margin-top: 30px;
+}
+
+svg {
+    width: 200px;
+    height: 200px;
+}
+
+.letter {
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+.letter path {
+    fill: none;
+    stroke-width: 22;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    }
+
+.letter.c path { stroke: #c655e0; }
+.letter.t path { stroke: #6dbef8; }
+
+@keyframes spin-slow { 
+    from { transform: rotate(0deg); } 
+    to { transform: rotate(360deg); } 
+}
+@keyframes spin-fast { 
+    from { transform: rotate(0deg); } 
+    to { transform: rotate(-360deg); } 
+}
+
+.letter.c { animation: spin-slow 0.3s linear infinite; }
+.letter.t { animation: spin-fast 0.4s linear infinite; }
