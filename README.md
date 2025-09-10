@@ -1,2 +1,2 @@
 # MT-Source
-My source of Multimedia Technology subject
+My source of Multimedia Technology subject for HTML CSS and JavaScript
